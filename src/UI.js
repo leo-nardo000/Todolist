@@ -4,7 +4,7 @@ const tasks = document.getElementById("tasks");
 const alerts = document.getElementById("alerts");
 
 export default class UI {
-	createTask({ task, date, taskcolor,id }) {
+	createTask({ task, date, taskcolor, id }) {
 		const array_date = date.split("-");
 		const final_date = new Date(
 			array_date[0],
@@ -39,8 +39,13 @@ export default class UI {
 	}
 
 	storeTask(task) {
-        task.id = id();
-		localStorage.setItem(task.id, JSON.stringify(task))
+		const id_task = id();
+		const task_id = JSON.parse(localStorage.getItem(id));
+		if (task_id !== null) {
+			this.storeTask(task);
+		}
+		task.id = id_task;
+		localStorage.setItem(task.id, JSON.stringify(task));
 	}
 
 	getTasks() {
@@ -61,11 +66,11 @@ export default class UI {
 
 	deleteTask(element) {
 		if (element.dataset.delete) {
-            element.parentElement.remove();
+			element.parentElement.remove();
 		}
 	}
 
-	alert(message, status, date) {
+	alert(message, status) {
 		const fragment = document.createDocumentFragment();
 		const p = document.createElement("p");
 		p.style.backgroundColor = status;
