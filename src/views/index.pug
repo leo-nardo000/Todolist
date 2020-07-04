@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        title Todo List
+    body
+        .container
+            h1.titulo Practica 1 Todo List
+            form#form.form
+                input(type="text" placeholder="type a task")#task.form__input
+                input(type="date")#date.form__input
+                button(type="submit").form__button
+                    i.fa.fa-pencil
+                .colores
+                    button(data-color="red" type="button").task__color
+                    button(data-color="#fbc531" type="button").task__color
+                    button(data-color="green" type="button").task__color
+            #alerts
+            #tasks
+
