@@ -40,8 +40,9 @@ export default class UI {
 
 	storeTask(task) {
 		const id_task = id();
-		const task_id = JSON.parse(localStorage.getItem(id));
-		if (task_id !== null) {
+		// en caso de que se genere el mismo id hacemos recursion
+		const repeat_id = JSON.parse(localStorage.getItem(id_task));
+		if (repeat_id !== null) {
 			this.storeTask(task);
 		}
 		task.id = id_task;
